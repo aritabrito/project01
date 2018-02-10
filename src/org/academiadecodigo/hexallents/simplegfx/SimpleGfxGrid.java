@@ -105,8 +105,8 @@ public class SimpleGfxGrid implements Grid {
      * @see Grid#makeGridPosition(int, int)
      */
     @Override
-    public GridPosition makeGridPosition(int col, int row) {
-        return new SimpleGfxGridPosition(col, row, this);
+    public GridPosition makeGridPosition(int col, int row, Color color) {
+        return new SimpleGfxGridPosition(col, row, this, color);
     }
 
     /**

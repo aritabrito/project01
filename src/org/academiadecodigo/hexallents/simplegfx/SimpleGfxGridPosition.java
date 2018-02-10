@@ -17,9 +17,10 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
      * @param row position row
      * @param grid Simple graphics grid
      */
-    public SimpleGfxGridPosition(int col, int row, SimpleGfxGrid grid){
+    public SimpleGfxGridPosition(int col, int row, SimpleGfxGrid grid, Color color){
         super(col, row, grid);
         rectangle = new Rectangle(grid.columnToX(col),grid.rowToY(row), grid.getCellSize(),grid.getCellSize());
+        rectangle.setColor(color);
         rectangle.fill();
         show();
     }

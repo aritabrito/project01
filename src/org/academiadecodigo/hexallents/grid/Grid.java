@@ -1,6 +1,7 @@
 package org.academiadecodigo.hexallents.grid;
 
 import org.academiadecodigo.hexallents.grid.position.GridPosition;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 
 /**
  * Created by codecadet on 10/02/2018.
@@ -40,5 +41,5 @@ public interface Grid {
      * @param row   the position row
      * @return the new grid position
      */
-    public GridPosition makeGridPosition(int col, int row);
+    public GridPosition makeGridPosition(int col, int row, Color color);
 }

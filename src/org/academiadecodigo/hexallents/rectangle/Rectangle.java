@@ -4,6 +4,7 @@ import org.academiadecodigo.hexallents.CollisionDetector;
 import org.academiadecodigo.hexallents.grid.Grid;
 import org.academiadecodigo.hexallents.grid.GridColor;
 import org.academiadecodigo.hexallents.grid.GridDirection;
+import org.academiadecodigo.hexallents.grid.position.AbstractGridPosition;
 import org.academiadecodigo.hexallents.grid.position.GridPosition;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 
@@ -25,10 +26,12 @@ public class Rectangle {
     protected GridDirection currentDirection;
 
 
-    public Rectangle(GridPosition pos) {
+    public Rectangle(GridPosition pos, Color color) {
         this.pos = pos;
-       // this.color = color;
+        this.color = color;
+    }
 
+    public Rectangle(GridPosition pos) {
     }
 
     public void setGrid(Grid grid) {

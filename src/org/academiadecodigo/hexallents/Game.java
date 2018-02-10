@@ -1,9 +1,13 @@
 package org.academiadecodigo.hexallents;
 
 import org.academiadecodigo.hexallents.grid.Grid;
+import org.academiadecodigo.hexallents.grid.GridColor;
 import org.academiadecodigo.hexallents.grid.GridFactory;
 import org.academiadecodigo.hexallents.rectangle.Rectangle;
 import org.academiadecodigo.hexallents.rectangle.RectangleFactory;
+import org.academiadecodigo.hexallents.simplegfx.SimpleGfxColorMapper;
+import org.academiadecodigo.hexallents.simplegfx.SimpleGfxGrid;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 
 /**
  * Created by codecadet on 10/02/2018.
@@ -55,9 +59,9 @@ public class Game {
 
         //myCar.keyEvents();
 
-
         Rectangle[][] rectangles = RectangleFactory.getRectangles(grid);
         grid.makeGridPosition();
+
 
 
 
