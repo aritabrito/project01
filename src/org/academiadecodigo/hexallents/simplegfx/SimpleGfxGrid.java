@@ -30,7 +30,6 @@ public class SimpleGfxGrid implements Grid {
         grid = new Rectangle(PADDING, PADDING, CELL_SIZE*cols, CELL_SIZE*rows);
         grid.draw();
 
-
         for (int i = PADDING; i < getWidth(); i+= CELL_SIZE) {
             Rectangle rect;
             for (int j = PADDING; j < getHeight(); j+= CELL_SIZE) {
