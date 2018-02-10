@@ -1,6 +1,5 @@
 package org.academiadecodigo.hexallents;
 
-import com.sun.org.apache.regexp.internal.RE;
 import org.academiadecodigo.hexallents.grid.Grid;
 import org.academiadecodigo.hexallents.grid.GridFactory;
 import org.academiadecodigo.hexallents.rectangle.Rectangle;

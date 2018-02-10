@@ -14,7 +14,7 @@ public class SimpleGfxGrid implements Grid {
     private int cols;
     private int rows;
     private Rectangle grid;
-    public static final int CELL_SIZE = 200;
+    public static int CELL_SIZE = 200;
 
     public SimpleGfxGrid(int cols, int rows){
         this.cols = cols;
@@ -27,58 +27,16 @@ public class SimpleGfxGrid implements Grid {
     @Override
     public void init() {
         grid = new Rectangle(PADDING, PADDING, CELL_SIZE*cols, CELL_SIZE*rows);
-        //grid.setColor(Color.LIGHT_GRAY);
-        //grid.fill();
         grid.draw();
 
-
-        /*
-
-        Rectangle um = new Rectangle(10, 10,CELL_SIZE, CELL_SIZE);
-        um.setColor(Color.GREEN);
-        um.fill();*/
-
-        // for colunas por / cellsize
-        // for linhas
-
-        int numberOfLoops = getWidth() / CELL_SIZE;
-
-
-
-
-        Rectangle rect;
         for (int i = PADDING; i < getWidth(); i+= CELL_SIZE) {
-            rect = new Rectangle(i, PADDING, CELL_SIZE, CELL_SIZE);
-            rect.setColor(Color.GREEN);
-            rect.draw();
+            Rectangle rect;
+            for (int j = PADDING; j < getHeight(); j+= CELL_SIZE) {
+                rect = new Rectangle(i, j, CELL_SIZE, CELL_SIZE);
+                rect.setColor(Color.RED);
+                rect.draw();
+            }
         }
-
-        Rectangle rect1;
-        for (int i = PADDING; i < getWidth(); i+= CELL_SIZE) {
-            rect1 = new Rectangle(i, CELL_SIZE+PADDING, CELL_SIZE, CELL_SIZE);
-            rect1.setColor(Color.BLACK);
-            rect1.draw();
-        }
-
-
-        Rectangle rect2;
-        for (int i = PADDING; i < getWidth(); i+= CELL_SIZE) {
-            rect2 = new Rectangle(i, CELL_SIZE+CELL_SIZE+PADDING, CELL_SIZE, CELL_SIZE);
-            rect2.setColor(Color.RED);
-            rect2.draw();
-        }
-
-        /*
-        Rectangle rect1;
-        for (int i = getHeight(); i > PADDING; i-= CELL_SIZE) {
-            rect1 = new Rectangle(i, i, CELL_SIZE, CELL_SIZE);
-            rect1.setColor(Color.GREEN);
-            rect1.fill();
-        }*/
-
-
-
-
     }
 
     /**
