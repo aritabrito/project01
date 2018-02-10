@@ -5,7 +5,7 @@ public class Main {
 
 
 
-        Game g = new Game(3, 3);
+        Game g = new Game(5, 5);
 
         g.init();
         g.start();

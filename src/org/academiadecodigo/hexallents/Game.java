@@ -56,7 +56,7 @@ public class Game {
         //myCar.keyEvents();
 
 
-        Rectangle[] rectangles = RectangleFactory.getRectangles(grid);
+        Rectangle[][] rectangles = RectangleFactory.getRectangles(grid);
         grid.makeGridPosition();
 
 

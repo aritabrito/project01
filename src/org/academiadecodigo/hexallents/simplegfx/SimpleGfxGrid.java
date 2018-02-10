@@ -14,7 +14,7 @@ public class SimpleGfxGrid implements Grid {
     private int cols;
     private int rows;
     private Rectangle grid;
-    public static int CELL_SIZE = 200;
+    public static int CELL_SIZE = 100;
 
     public SimpleGfxGrid(int cols, int rows){
         this.cols = cols;
