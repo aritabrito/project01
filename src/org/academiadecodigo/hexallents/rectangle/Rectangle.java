@@ -10,4 +10,7 @@ public class Rectangle {
     // cor
     // posição
     // grid
+
+
+    // método para garantir que o rectangulo é posicionado dentro dos limites da grelha
 }
