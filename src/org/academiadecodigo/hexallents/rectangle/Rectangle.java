@@ -25,9 +25,9 @@ public class Rectangle {
     protected GridDirection currentDirection;
 
 
-    public Rectangle(GridPosition pos, Color color) {
+    public Rectangle(GridPosition pos) {
         this.pos = pos;
-        this.color = color;
+       // this.color = color;
 
     }
 

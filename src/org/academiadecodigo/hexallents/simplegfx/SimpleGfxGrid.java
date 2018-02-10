@@ -15,7 +15,6 @@ public class SimpleGfxGrid implements Grid {
     private int rows;
     private Rectangle grid;
     public static int CELL_SIZE = 100;
-    private Color color;
 
     public SimpleGfxGrid(int cols, int rows){
         this.cols = cols;
@@ -107,7 +106,7 @@ public class SimpleGfxGrid implements Grid {
      */
     @Override
     public GridPosition makeGridPosition(int col, int row) {
-        return new SimpleGfxGridPosition(col, row, this, color);
+        return new SimpleGfxGridPosition(col, row, this);
     }
 
     /**

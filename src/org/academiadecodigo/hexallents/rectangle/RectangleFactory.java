@@ -3,6 +3,8 @@ package org.academiadecodigo.hexallents.rectangle;
 import org.academiadecodigo.hexallents.grid.Grid;
 import org.academiadecodigo.hexallents.grid.GridColor;
 import org.academiadecodigo.hexallents.simplegfx.SimpleGfxColorMapper;
+import org.academiadecodigo.hexallents.simplegfx.SimpleGfxGrid;
+import org.academiadecodigo.hexallents.simplegfx.SimpleGfxGridPosition;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 
 /**

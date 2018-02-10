@@ -10,8 +10,8 @@ import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
  */
 public class Player extends Rectangle implements MouseHandler{
 
-    public Player(GridPosition pos, Color color) {
-        super(pos, color);
+    public Player(GridPosition pos) {
+        super(pos);
     }
 
     // tem os eventos do rato
