@@ -1,5 +1,6 @@
 package org.academiadecodigo.hexallents.rectangle;
 
+import org.academiadecodigo.hexallents.grid.position.GridPosition;
 import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
 import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 
@@ -7,6 +8,14 @@ import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
  * Created by codecadet on 10/02/2018.
  */
 public class Player extends Rectangle implements MouseHandler{
+    /**
+     * Constructs a new car
+     *
+     * @param pos the initial car position
+     */
+    public Player(GridPosition pos) {
+        super(pos);
+    }
 
 
     // tem os eventos do rato
