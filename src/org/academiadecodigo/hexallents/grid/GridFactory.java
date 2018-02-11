@@ -14,7 +14,7 @@ public class GridFactory {
      * @param rows     the number of rows of the grid
      * @return the new grid
      */
-    public static Grid makeGrid(int cols, int rows) { // podemos incluir o cellsize se for preciso
+    public static SimpleGfxGrid makeGrid(int cols, int rows) { // podemos incluir o cellsize se for preciso
         return new SimpleGfxGrid(cols, rows);
     }
 }

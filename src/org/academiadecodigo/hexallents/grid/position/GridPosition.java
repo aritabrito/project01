@@ -1,6 +1,7 @@
 package org.academiadecodigo.hexallents.grid.position;
 
-import org.academiadecodigo.hexallents.grid.GridColor;
+import org.academiadecodigo.hexallents.simplegfx.ColorEnum;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 
 /**
  * Created by codecadet on 10/02/2018.
@@ -34,14 +35,14 @@ public interface GridPosition {
      *
      * @return the position getColor
      */
-    public GridColor getColor();
+    public Color getColor();
 
     /**
      * Changes the getColor of this grid position
      *
      * @param color the new position getColor
      */
-    public void setColor(GridColor color);
+    public void setColor(ColorEnum color);
 
     /**
      * Displays the position in the grid

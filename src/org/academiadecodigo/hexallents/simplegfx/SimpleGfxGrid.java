@@ -2,6 +2,7 @@ package org.academiadecodigo.hexallents.simplegfx;
 
 import org.academiadecodigo.hexallents.grid.Grid;
 import org.academiadecodigo.hexallents.grid.position.GridPosition;
+import org.academiadecodigo.hexallents.rectangle.Square;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
@@ -55,10 +56,17 @@ public class SimpleGfxGrid implements Grid {
         return rows;
     }
 
+
     @Override
-    public GridPosition makeGridPosition() {
+    public SimpleGfxGrid makeGridPosition() {
         return null;
     }
+
+    @Override
+    public SimpleGfxGrid makeGridPosition(int col, int row, Color color) {
+        return null;
+    }
+
 
     /**
      * Obtains the width of the grid in pixels
@@ -100,14 +108,11 @@ public class SimpleGfxGrid implements Grid {
         return CELL_SIZE;
     }
 
-
-    /**
-     * @see Grid#makeGridPosition(int, int)
-     */
+    /*
     @Override
     public GridPosition makeGridPosition(int col, int row, Color color) {
-        return new SimpleGfxGridPosition(col, row, this, color);
-    }
+        return new Square.setPos(col, row, color);
+    }*/
 
     /**
      * Auxiliary method to compute the y value that corresponds to a specific row

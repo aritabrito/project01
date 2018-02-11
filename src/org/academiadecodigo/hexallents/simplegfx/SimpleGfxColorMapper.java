@@ -1,6 +1,5 @@
 package org.academiadecodigo.hexallents.simplegfx;
 
-import org.academiadecodigo.hexallents.grid.GridColor;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 
 /**
@@ -18,7 +17,7 @@ public class SimpleGfxColorMapper {
             Color.WHITE
     };
 
-    public static Color getColor(GridColor color){
+    public static Color getColor(ColorEnum color){
 
         Color sGfxColor = null;
 

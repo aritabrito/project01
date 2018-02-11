@@ -1,7 +1,10 @@
 package org.academiadecodigo.hexallents.grid.position;
 
 import org.academiadecodigo.hexallents.grid.Grid;
-import org.academiadecodigo.hexallents.grid.GridColor;
+import org.academiadecodigo.hexallents.simplegfx.ColorEnum;
+import org.academiadecodigo.hexallents.simplegfx.SimpleGfxColorMapper;
+import org.academiadecodigo.hexallents.simplegfx.SimpleGfxGrid;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 
 /**
  * Created by codecadet on 10/02/2018.
@@ -10,7 +13,7 @@ public class AbstractGridPosition implements GridPosition {
 
     private int col;
     private int row;
-    private GridColor color;
+    private Color color;
     private Grid grid;
 
     /**
@@ -20,15 +23,19 @@ public class AbstractGridPosition implements GridPosition {
      * @param row   the row of the grid position
      * @param grid  the grid in which the position will be displayed
      */
-    public AbstractGridPosition(int col, int row, Grid grid) {
+    public AbstractGridPosition(int col, int row, SimpleGfxGrid grid, ColorEnum color) {
         this.col = col;
         this.row = row;
         this.grid = grid;
-        this.color = GridColor.NOCOLOR;
+        setColor(color);
     }
 
     public Grid getGrid() {
         return grid;
+    }
+
+    public void setGrid(Grid grid) {
+        this.grid = grid;
     }
 
     /**
@@ -61,16 +68,14 @@ public class AbstractGridPosition implements GridPosition {
      * @see GridPosition#getColor()
      */
     @Override
-    public GridColor getColor() {
+    public Color getColor() {
         return color;
     }
 
-    /**
-     * @see GridPosition#setColor(GridColor)
-     */
+
     @Override
-    public void setColor(GridColor color) {
-        this.color = color;
+    public void setColor(ColorEnum color) {
+        this.color = SimpleGfxColorMapper.getColor(color);
         show();
     }
 

@@ -1,13 +1,10 @@
 package org.academiadecodigo.hexallents;
 
 import org.academiadecodigo.hexallents.grid.Grid;
-import org.academiadecodigo.hexallents.grid.GridColor;
 import org.academiadecodigo.hexallents.grid.GridFactory;
-import org.academiadecodigo.hexallents.rectangle.Rectangle;
-import org.academiadecodigo.hexallents.rectangle.RectangleFactory;
-import org.academiadecodigo.hexallents.simplegfx.SimpleGfxColorMapper;
+import org.academiadecodigo.hexallents.rectangle.*;
+import org.academiadecodigo.hexallents.rectangle.Player;
 import org.academiadecodigo.hexallents.simplegfx.SimpleGfxGrid;
-import org.academiadecodigo.simplegraphics.graphics.Color;
 
 /**
  * Created by codecadet on 10/02/2018.
@@ -40,14 +37,16 @@ public class Game {
 
 
 
-    private Grid grid;
+    private SimpleGfxGrid grid;
 
-    private Rectangle[] rectangles;
+    private Square[] squares;
 
     private CollisionDetector collisionDetector;
+    private Player player;
 
     Game(int cols, int rows) {
         grid = GridFactory.makeGrid(cols, rows);
+
     }
 
     /**
@@ -59,11 +58,13 @@ public class Game {
 
         //myCar.keyEvents();
 
-        Rectangle[][] rectangles = RectangleFactory.getRectangles(grid);
+        Square[][] squares = SquareFactory.getRectangles(grid);
+
         grid.makeGridPosition();
 
+        player = new Player(grid);
 
-
+        player.keyEvents();
 
 
         /*
