@@ -15,7 +15,7 @@ public class Player extends Rectangle implements MouseHandler{
     }
 
     // tem os eventos do rato
-    // tem acesso à gralha e às células
+    // tem acesso à grelha e às células
 
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {

@@ -27,18 +27,24 @@ public class RectangleFactory {
 
     public static Rectangle[][] getRectangles(Grid grid) {
 
-        Rectangle[][] rectanglesContainer = new Rectangle[grid.getCols()][3];
+        Rectangle[][] rectanglesContainer = new Rectangle[grid.getCols()][5];
 
         Rectangle[] twoRects = new Rectangle[2];
         rectanglesContainer[0] = twoRects;
+
         Rectangle[] twoRects1 = new Rectangle[2];
         rectanglesContainer[1] = twoRects1;
+
         Rectangle[] twoRects2 = new Rectangle[2];
         rectanglesContainer[2] = twoRects2;
 
+        Rectangle[] twoRects3 = new Rectangle[2];
+        rectanglesContainer[3] = twoRects2;
+
+        Rectangle[] twoRects4 = new Rectangle[2];
+        rectanglesContainer[4] = twoRects2;
+
         GridColor[] colors = GridColor.values();
-
-
 
 
         for (int i = 0; i < rectanglesContainer.length; i++) {
@@ -58,6 +64,12 @@ public class RectangleFactory {
             twoRects2[0] = new Rectangle(grid.makeGridPosition(2,1,SimpleGfxColorMapper.getColor(colors[2])));
             twoRects2[1] = new Rectangle(grid.makeGridPosition(2, 4,SimpleGfxColorMapper.getColor(colors[2])));
             //colorCounter ++;
+
+            twoRects3[0] = new Rectangle(grid.makeGridPosition(4,0,SimpleGfxColorMapper.getColor(colors[3])));
+            twoRects3[1] = new Rectangle(grid.makeGridPosition(3, 3,SimpleGfxColorMapper.getColor(colors[3])));
+
+            twoRects4[0] = new Rectangle(grid.makeGridPosition(4,1,SimpleGfxColorMapper.getColor(colors[4])));
+            twoRects4[1] = new Rectangle(grid.makeGridPosition(3, 4,SimpleGfxColorMapper.getColor(colors[4])));
         }
 
         // atribuir uma cor do enum
