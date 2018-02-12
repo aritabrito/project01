@@ -25,7 +25,7 @@ public class SquareFactory {
 
     public static Square[][] getRectangles( SimpleGfxGrid grid) {
 
-        Square[][] rectanglesContainer = new Square[grid.getCols()][5];
+        Square[][] rectanglesContainer = new Square[grid.getCols()+1][5];
 
         Square[] twoRects = new Square[2];
         rectanglesContainer[0] = twoRects;
@@ -41,6 +41,9 @@ public class SquareFactory {
 
         Square[] twoRects4 = new Square[2];
         rectanglesContainer[4] = twoRects2;
+
+        Square[] brancos = new Square[15];
+        rectanglesContainer[5] = brancos;
 
         ColorEnum[] colors = ColorEnum.values();
 
@@ -65,6 +68,26 @@ public class SquareFactory {
 
             twoRects4[0] = new Square(4, 1, grid, Color.ORANGE);
             twoRects4[1] = new Square(3, 4, grid, Color.ORANGE);
+
+
+            brancos[0] = new Square(1, 0, grid, Color.BLACK);
+            brancos[1] = new Square(3, 0, grid, Color.BLACK);
+            brancos[2] = new Square(0, 1, grid, Color.BLACK);
+            brancos[3] = new Square(1, 1, grid, Color.BLACK);
+            brancos[4] = new Square(3, 1, grid, Color.BLACK);
+            brancos[5] = new Square(0, 2, grid, Color.BLACK);
+            brancos[6] = new Square(1, 2, grid, Color.BLACK);
+            brancos[7] = new Square(2, 2, grid, Color.BLACK);
+
+            brancos[8] = new Square(3, 2, grid, Color.BLACK);
+            brancos[9] = new Square(4, 2, grid, Color.BLACK);
+            brancos[10] = new Square(0, 3, grid, Color.BLACK);
+            brancos[11] = new Square(2, 3, grid, Color.BLACK);
+            brancos[12] = new Square(4, 3, grid, Color.BLACK);
+            brancos[13] = new Square(0, 4, grid, Color.BLACK);
+            brancos[14] = new Square(4, 4, grid, Color.BLACK);
+
+
         }
 
         // atribuir uma cor do enum

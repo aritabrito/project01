@@ -11,23 +11,32 @@ import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
 import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
 import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 
+import java.awt.event.MouseListener;
+
 /**
  * Created by codecadet on 10/02/2018.
  */
-public class Player implements MouseHandler {
+public class Player implements MouseHandler{
     private Rectangle rectangle;
     private Mouse myMouse;
     private Square[][] squares;
     private SimpleGfxGrid grid;
-    ColorEnum[] colors = ColorEnum.values();
+    private Square toTest;
+
+    private Square[] pintaveis;
+
+
+    private Color color;
 
 
 
     public Player(SimpleGfxGrid grid) {
         myMouse = new Mouse(this);
         this.grid = grid;
-
+        squares = SquareFactory.getRectangles(grid);
         //keyEvents();
+        color = Color.GREEN;
+        pintaveis = squares[5];
     }
 
     // tem os eventos do rato
@@ -44,7 +53,6 @@ public class Player implements MouseHandler {
 
         //MouseEvent clickOne = new MouseEvent(grid.getX(), grid.getY(), MouseEventType.MOUSE_CLICKED);
         //myMouse.addEventListener();
-
     }
 
 
@@ -61,26 +69,76 @@ public class Player implements MouseHandler {
         // quando preenchido, se clickar no rectangulo limpo a jogada dessa cor
 
 
-        Square toTest = squares[0][0];
-        if (mouseEvent.getX() >= SimpleGfxGrid.PADDING && mouseEvent.getX() <= SimpleGfxGrid.PADDING + SimpleGfxGrid.CELL_SIZE &&
-                mouseEvent.getY() >= SimpleGfxGrid.PADDING && mouseEvent.getY() <= SimpleGfxGrid.PADDING + SimpleGfxGrid.CELL_SIZE) {
+        toTest = squares[3][0];
+
+        //rectangle = toTest.getRectangle();
+
+        if (mouseEvent.getX() >= toTest.getX1() && mouseEvent.getX() <= toTest.getX1() + toTest.getX2() &&
+                mouseEvent.getY() >= toTest.getY1() && mouseEvent.getY() <= toTest.getY1() + toTest.getY2()) {
+
+            toTest.setSelected(); // se selected activa mouse moved
+
+            color = toTest.getColor();
+
+
+
+
+            System.out.println(toTest.isSelected());
+
+
+            for (Square pinta:pintaveis) {
+                if (pinta.getColor() == Color.BLACK) {
+                    pinta.setColor(color);
+                    System.out.println("black");
+
+                } else {
+                    System.out.println("not black");
+                }
+            }
 
             // adquire a cor e arrasta
             /*toTest.translate(SimpleGfxGrid.CELL_SIZE,SimpleGfxGrid.PADDING);
             Square test = new Square(grid.makeGridPosition(0,1,SimpleGfxColorMapper.getColor(colors[2])));
             test.fill();*/
-            System.out.println("click" + mouseEvent.toString());
+            System.out.println("click" + mouseEvent.toString() + toTest.getColor().toString());
         } else {
+
+
+
             System.out.println("fora");
         }
     }
 
+    /*public void moveOnly(MouseEvent mouseEvent){
+        if (toTest.isSelected()){
+            mouseMoved(mouseEvent);
+        }*/
+
+
+
     @Override
     public void mouseMoved(MouseEvent mouseEvent) {
 
+
         /*
-        Square test = new Square(grid.makeGridPosition(0,1,SimpleGfxColorMapper.getColor(colors[2])));
-        test.fill();*/
+        if (toTest.isSelected()) {
+            System.out.println("foi seleccionado");
+            rectangle = toTest.getRectangle();
+
+
+
+            Square test = new Square(3,1,grid,color);
+
+            test.getRectangle().fill();
+        }*/
+
+        /*
+        Square test = new Square(3,1,grid,rectangle.getColor());
+
+        test.getRectangle().fill();*/
+
+
+
         // pinta as células da cor do rectangulo inicial, enquanto se move
 
         // colision -> para verificar se pode pode preencher ou não
