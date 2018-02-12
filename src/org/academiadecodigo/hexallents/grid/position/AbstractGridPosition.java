@@ -13,7 +13,6 @@ public class AbstractGridPosition implements GridPosition {
 
     private int col;
     private int row;
-    private Color color;
     private Grid grid;
 
     /**
@@ -23,11 +22,11 @@ public class AbstractGridPosition implements GridPosition {
      * @param row   the row of the grid position
      * @param grid  the grid in which the position will be displayed
      */
-    public AbstractGridPosition(int col, int row, SimpleGfxGrid grid, ColorEnum color) {
+    public AbstractGridPosition(int col, int row, SimpleGfxGrid grid) {
         this.col = col;
         this.row = row;
         this.grid = grid;
-        setColor(color);
+
     }
 
     public Grid getGrid() {
@@ -46,6 +45,11 @@ public class AbstractGridPosition implements GridPosition {
         this.col = col;
         this.row = row;
         show();
+    }
+
+    @Override
+    public Color getColor() {
+        return null;
     }
 
     /**
@@ -67,31 +71,30 @@ public class AbstractGridPosition implements GridPosition {
     /**
      * @see GridPosition#getColor()
      */
-    @Override
+   /* @Override
     public Color getColor() {
         return color;
-    }
+    }*/
 
 
-    @Override
-    public void setColor(ColorEnum color) {
+    /*@Override
+   public void setColor(ColorEnum color) {
         this.color = SimpleGfxColorMapper.getColor(color);
-        show();
-    }
+    }*/
 
     @Override
     public void show() {
 
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "GridPosition{" +
                 "col=" + col +
                 ", row=" + row +
                 ", getColor=" + color +
                 '}';
-    }
+    }*/
 }
 
 

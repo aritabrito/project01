@@ -42,7 +42,7 @@ public interface GridPosition {
      *
      * @param color the new position getColor
      */
-    public void setColor(ColorEnum color);
+    //public void setColor(ColorEnum color);
 
     /**
      * Displays the position in the grid

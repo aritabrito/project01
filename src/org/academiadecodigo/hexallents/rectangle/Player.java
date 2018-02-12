@@ -25,7 +25,6 @@ public class Player implements MouseHandler {
 
     public Player(SimpleGfxGrid grid) {
         myMouse = new Mouse(this);
-        squares = SquareFactory.getRectangles(grid);
         this.grid = grid;
 
         //keyEvents();

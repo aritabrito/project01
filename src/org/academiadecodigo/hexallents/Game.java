@@ -39,7 +39,7 @@ public class Game {
 
     private SimpleGfxGrid grid;
 
-    private Square[] squares;
+    private Square[][] squares;
 
     private CollisionDetector collisionDetector;
     private Player player;
@@ -58,10 +58,10 @@ public class Game {
 
         //myCar.keyEvents();
 
-        Square[][] squares = SquareFactory.getRectangles(grid);
+        //squares = SquareFactory.getRectangles(grid);
 
-        grid.makeGridPosition();
-
+        //grid.makeGridPosition();
+        squares = SquareFactory.getRectangles(grid);
         player = new Player(grid);
 
         player.keyEvents();

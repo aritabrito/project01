@@ -22,11 +22,11 @@ public class Square extends AbstractGridPosition {
     // Allow direct access from subclasses
     protected CollisionDetector collisionDetector;
 
-    public Square(int col, int row, SimpleGfxGrid grid, ColorEnum color){
-        super(col, row, grid, color);
+    public Square(int col, int row, SimpleGfxGrid grid, Color color){
+        super(col, row, grid);
         rectangle = new Rectangle(grid.columnToX(this.getCol()),grid.rowToY(this.getRow()), grid.getCellSize(),grid.getCellSize());
-        setColor(color);
         rectangle.fill();
+        rectangle.setColor(color);
     }
 
     public void setCollisionDetector(CollisionDetector collisionDetector) {
