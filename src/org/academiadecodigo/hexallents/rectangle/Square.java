@@ -33,6 +33,7 @@ public class Square extends AbstractGridPosition  {
         y1 = grid.rowToY(this.getRow());
         x2 = grid.getCellSize();
         y2 = grid.getCellSize();
+        this.color = color;
         rectangle = new Rectangle(x1,y1,x2,y2);
         rectangle.fill();
         rectangle.setColor(color);
@@ -74,6 +75,6 @@ public class Square extends AbstractGridPosition  {
     }
 
     public void setColor(Color color) {
-        this.color = color;
+        rectangle.setColor(color);
     }
 }

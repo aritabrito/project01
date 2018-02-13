@@ -1,8 +1,6 @@
 package org.academiadecodigo.hexallents.simplegfx;
 
 import org.academiadecodigo.hexallents.grid.Grid;
-import org.academiadecodigo.hexallents.grid.position.GridPosition;
-import org.academiadecodigo.hexallents.rectangle.Square;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
@@ -15,7 +13,11 @@ public class SimpleGfxGrid implements Grid {
     private int cols;
     private int rows;
     private Rectangle grid;
+    Rectangle background;
+    Rectangle gridLine;
     public static int CELL_SIZE = 100;
+
+
 
     public SimpleGfxGrid(int cols, int rows){
         this.cols = cols;
@@ -31,11 +33,13 @@ public class SimpleGfxGrid implements Grid {
         grid.draw();
 
         for (int i = PADDING; i < getWidth(); i+= CELL_SIZE) {
-            Rectangle rect;
             for (int j = PADDING; j < getHeight(); j+= CELL_SIZE) {
-                rect = new Rectangle(i, j, CELL_SIZE, CELL_SIZE);
-                rect.setColor(Color.RED);
-                rect.draw();
+                background = new Rectangle(i, j, CELL_SIZE, CELL_SIZE);
+                background.setColor(Color.BLACK);
+                background.fill();
+                gridLine = new Rectangle(i, j, CELL_SIZE, CELL_SIZE);
+                gridLine.setColor(Color.DARK_GRAY);
+                gridLine.draw();
             }
         }
     }
@@ -132,5 +136,9 @@ public class SimpleGfxGrid implements Grid {
     public int columnToX(int column) {
         // converts row to pixels (x)
         return CELL_SIZE * column + PADDING;
+    }
+
+    public Rectangle getBackground() {
+        return background;
     }
 }

@@ -16,27 +16,19 @@ import java.awt.event.MouseListener;
 /**
  * Created by codecadet on 10/02/2018.
  */
-public class Player implements MouseHandler{
+public class Player implements MouseHandler {
     private Rectangle rectangle;
     private Mouse myMouse;
     private Square[][] squares;
     private SimpleGfxGrid grid;
-    private Square toTest;
-
-    private Square[] pintaveis;
-
-
     private Color color;
-
-
+    private boolean selected;
 
     public Player(SimpleGfxGrid grid) {
         myMouse = new Mouse(this);
         this.grid = grid;
         squares = SquareFactory.getRectangles(grid);
         //keyEvents();
-        color = Color.GREEN;
-        pintaveis = squares[5];
     }
 
     // tem os eventos do rato
@@ -68,58 +60,47 @@ public class Player implements MouseHandler{
 
         // quando preenchido, se clickar no rectangulo limpo a jogada dessa cor
 
-
-        toTest = squares[3][0];
-
         //rectangle = toTest.getRectangle();
+       for (int i = 0; i < squares.length; i++) {
 
-        if (mouseEvent.getX() >= toTest.getX1() && mouseEvent.getX() <= toTest.getX1() + toTest.getX2() &&
-                mouseEvent.getY() >= toTest.getY1() && mouseEvent.getY() <= toTest.getY1() + toTest.getY2()) {
-
-            toTest.setSelected(); // se selected activa mouse moved
-
-            color = toTest.getColor();
-
-
-
-
-            System.out.println(toTest.isSelected());
-
-
-            for (Square pinta:pintaveis) {
-                if (pinta.getColor() == Color.BLACK) {
-                    pinta.setColor(color);
-                    System.out.println("black");
-
-                } else {
-                    System.out.println("not black");
+            for (int j = 0; j < squares[i].length; j++) {
+                Square sqr = squares[i][j];
+        /*for (int i = 0; i < squares.length; i++) {
+            for (int j = 0; j < squares[i].length; j++) {*/
+                if (mouseEvent.getX() >= sqr.getX1() && mouseEvent.getX() <= sqr.getX1() + sqr.getX2() &&
+                        mouseEvent.getY() >= sqr.getY1() && mouseEvent.getY() <= sqr.getY1() + sqr.getY2()){
+                    squares[i][j].setSelected(); // se selected activa mouse moved
+                    color = squares[i][j].getColor();
+                    selected = squares[i][j].isSelected();
                 }
             }
 
-            // adquire a cor e arrasta
+        }// adquire a cor e arrasta
             /*toTest.translate(SimpleGfxGrid.CELL_SIZE,SimpleGfxGrid.PADDING);
             Square test = new Square(grid.makeGridPosition(0,1,SimpleGfxColorMapper.getColor(colors[2])));
             test.fill();*/
-            System.out.println("click" + mouseEvent.toString() + toTest.getColor().toString());
-        } else {
-
-
-
-            System.out.println("fora");
-        }
+        System.out.println("click" + mouseEvent.toString());
+        System.out.println("fora");
     }
+
+
+
+
+
+
 
     /*public void moveOnly(MouseEvent mouseEvent){
         if (toTest.isSelected()){
             mouseMoved(mouseEvent);
         }*/
 
-
-
     @Override
     public void mouseMoved(MouseEvent mouseEvent) {
-
-
+        if (selected) {
+            if (mouseEvent.getX() >= grid.getBackground().getX() && mouseEvent.getX() <= grid.getBackground().getWidth() &&
+                    mouseEvent.getY() >= grid.getBackground().getY() && mouseEvent.getY() <= grid.getBackground().getHeight()) {
+                grid.getBackground().setColor(color);
+            }
         /*
         if (toTest.isSelected()) {
             System.out.println("foi seleccionado");
@@ -138,14 +119,14 @@ public class Player implements MouseHandler{
         test.getRectangle().fill();*/
 
 
+            // pinta as células da cor do rectangulo inicial, enquanto se move
 
-        // pinta as células da cor do rectangulo inicial, enquanto se move
+            // colision -> para verificar se pode pode preencher ou não
+            // collision -> quando encontra uma célula da mesma cor pode entrar para terminar a jogada
 
-        // colision -> para verificar se pode pode preencher ou não
-        // collision -> quando encontra uma célula da mesma cor pode entrar para terminar a jogada
-
-        // em caso de engano, permitir por a celula na cor inicial se ela tiver anteriormente a cor do rectangulo inicial
+            // em caso de engano, permitir por a celula na cor inicial se ela tiver anteriormente a cor do rectangulo inicial
 
 
+        }
     }
 }
