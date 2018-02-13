@@ -19,7 +19,7 @@ public class Square extends AbstractGridPosition  {
     private int y1;
     private int x2;
     private int y2;
-
+    private boolean colored;
     private boolean selected;
 
 
@@ -37,7 +37,7 @@ public class Square extends AbstractGridPosition  {
         rectangle = new Rectangle(x1,y1,x2,y2);
         rectangle.fill();
         rectangle.setColor(color);
-
+        colored = true;
         selected = false;
     }
 
@@ -76,5 +76,9 @@ public class Square extends AbstractGridPosition  {
 
     public void setColor(Color color) {
         rectangle.setColor(color);
+    }
+
+    public boolean isColored() {
+        return colored;
     }
 }

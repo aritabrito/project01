@@ -61,28 +61,29 @@ public class Player implements MouseHandler {
         // quando preenchido, se clickar no rectangulo limpo a jogada dessa cor
 
         //rectangle = toTest.getRectangle();
-       for (int i = 0; i < squares.length; i++) {
 
+        for (int i = 0; i < squares.length; i++) {
             for (int j = 0; j < squares[i].length; j++) {
+
                 Square sqr = squares[i][j];
-        /*for (int i = 0; i < squares.length; i++) {
-            for (int j = 0; j < squares[i].length; j++) {*/
                 if (mouseEvent.getX() >= sqr.getX1() && mouseEvent.getX() <= sqr.getX1() + sqr.getX2() &&
-                        mouseEvent.getY() >= sqr.getY1() && mouseEvent.getY() <= sqr.getY1() + sqr.getY2()){
+                        mouseEvent.getY() >= sqr.getY1() && mouseEvent.getY() <= sqr.getY1() + sqr.getY2()) {
                     squares[i][j].setSelected(); // se selected activa mouse moved
                     color = squares[i][j].getColor();
                     selected = squares[i][j].isSelected();
+                    System.out.println("click");
+                    break;
                 }
-            }
 
-        }// adquire a cor e arrasta
+
+                // adquire a cor e arrasta
             /*toTest.translate(SimpleGfxGrid.CELL_SIZE,SimpleGfxGrid.PADDING);
             Square test = new Square(grid.makeGridPosition(0,1,SimpleGfxColorMapper.getColor(colors[2])));
             test.fill();*/
-        System.out.println("click" + mouseEvent.toString());
-        System.out.println("fora");
+                System.out.println("fora");
+            }
+        }
     }
-
 
 
 
@@ -97,10 +98,12 @@ public class Player implements MouseHandler {
     @Override
     public void mouseMoved(MouseEvent mouseEvent) {
         if (selected) {
-            if (mouseEvent.getX() >= grid.getBackground().getX() && mouseEvent.getX() <= grid.getBackground().getWidth() &&
-                    mouseEvent.getY() >= grid.getBackground().getY() && mouseEvent.getY() <= grid.getBackground().getHeight()) {
-                grid.getBackground().setColor(color);
-            }
+
+            grid.getBackground().setColor(color);
+            System.out.println("PINTA CARALHO!!!!!!!!!!!!");
+        }
+
+    }
         /*
         if (toTest.isSelected()) {
             System.out.println("foi seleccionado");
@@ -119,14 +122,12 @@ public class Player implements MouseHandler {
         test.getRectangle().fill();*/
 
 
-            // pinta as células da cor do rectangulo inicial, enquanto se move
+    // pinta as células da cor do rectangulo inicial, enquanto se move
 
-            // colision -> para verificar se pode pode preencher ou não
-            // collision -> quando encontra uma célula da mesma cor pode entrar para terminar a jogada
+    // colision -> para verificar se pode pode preencher ou não
+    // collision -> quando encontra uma célula da mesma cor pode entrar para terminar a jogada
 
-            // em caso de engano, permitir por a celula na cor inicial se ela tiver anteriormente a cor do rectangulo inicial
+    // em caso de engano, permitir por a celula na cor inicial se ela tiver anteriormente a cor do rectangulo inicial
 
 
-        }
-    }
 }

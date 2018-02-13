@@ -16,8 +16,9 @@ public class SimpleGfxGrid implements Grid {
     Rectangle background;
     Rectangle gridLine;
     public static int CELL_SIZE = 100;
+    private Rectangle[] backgroundArr = new Rectangle[cols*rows];
 
-
+    //CRIA RECTANGULOS E RECEBE UM ARRAY DE INTEIROS QUE IRÁ CORRESPONDER A UMA COR!
 
     public SimpleGfxGrid(int cols, int rows){
         this.cols = cols;
@@ -37,6 +38,7 @@ public class SimpleGfxGrid implements Grid {
                 background = new Rectangle(i, j, CELL_SIZE, CELL_SIZE);
                 background.setColor(Color.BLACK);
                 background.fill();
+
                 gridLine = new Rectangle(i, j, CELL_SIZE, CELL_SIZE);
                 gridLine.setColor(Color.DARK_GRAY);
                 gridLine.draw();
