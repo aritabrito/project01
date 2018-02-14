@@ -12,22 +12,16 @@ import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
  * Created by codecadet on 10/02/2018.
  */
 public class Player implements MouseHandler {
-    private Rectangle rectangle;
+
     private Mouse myMouse;
-    private Square[][] squares;
     private GridGame grid;
-    private Color color;
     private boolean selected;
 
     public Player(GridGame grid) {
-        myMouse = new Mouse(this);
         this.grid = grid;
-        squares = SquareFactory.getRectangles(grid);
-        //keyEvents();
+        myMouse = new Mouse(this);
+        selected = false;
     }
-
-    // tem os eventos do rato
-    // tem acesso à grelha e às células
 
 
     public void keyEvents() {
@@ -35,60 +29,13 @@ public class Player implements MouseHandler {
         myMouse.addEventListener(MouseEventType.MOUSE_CLICKED);
         myMouse.addEventListener(MouseEventType.MOUSE_MOVED);
 
-        //  toTest.getPos().getColor()
-
-
-        //MouseEvent clickOne = new MouseEvent(grid.getX(), grid.getY(), MouseEventType.MOUSE_CLICKED);
-        //myMouse.addEventListener();
     }
 
 
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
 
-        // quando click no rectângulo pinto as células da mesma cor do rectângulo em que clickou
-        // tem que saber a cor desse mesmo rectângulo
-        // activa o mouse move
-
-        // clicko para desactivar o mouseMoved
-
-
-        // quando preenchido, se clickar no rectangulo limpo a jogada dessa cor
-
-        //rectangle = toTest.getRectangle();
-
-        for (int i = 0; i < squares.length; i++) {
-            for (int j = 0; j < squares[i].length; j++) {
-
-                Square sqr = squares[i][j];
-                if (mouseEvent.getX() >= sqr.getX1() && mouseEvent.getX() <= sqr.getX1() + sqr.getX2() &&
-                        mouseEvent.getY() >= sqr.getY1() && mouseEvent.getY() <= sqr.getY1() + sqr.getY2()) {
-                    squares[i][j].setSelected(); // se selected activa mouse moved
-                    color = squares[i][j].getColor();
-                    selected = squares[i][j].isSelected();
-                    System.out.println("click");
-                    break;
-                }
-
-
-                // adquire a cor e arrasta
-            /*toTest.translate(GridGame.CELL_SIZE,GridGame.PADDING);
-            Square test = new Square(grid.makeGridPosition(0,1,ColorMapper.getColor(colors[2])));
-            test.fill();*/
-                System.out.println("fora");
-            }
-        }
     }
-
-
-
-
-
-
-    /*public void moveOnly(MouseEvent mouseEvent){
-        if (toTest.isSelected()){
-            mouseMoved(mouseEvent);
-        }*/
 
     @Override
     public void mouseMoved(MouseEvent mouseEvent) {
@@ -97,30 +44,4 @@ public class Player implements MouseHandler {
         }
 
     }
-        /*
-        if (toTest.isSelected()) {
-            System.out.println("foi seleccionado");
-            rectangle = toTest.getRectangle();
-
-
-
-            Square test = new Square(3,1,grid,color);
-
-            test.getRectangle().fill();
-        }*/
-
-        /*
-        Square test = new Square(3,1,grid,rectangle.getColor());
-
-        test.getRectangle().fill();*/
-
-
-    // pinta as células da cor do rectangulo inicial, enquanto se move
-
-    // colision -> para verificar se pode pode preencher ou não
-    // collision -> quando encontra uma célula da mesma cor pode entrar para terminar a jogada
-
-    // em caso de engano, permitir por a celula na cor inicial se ela tiver anteriormente a cor do rectangulo inicial
-
-
 }

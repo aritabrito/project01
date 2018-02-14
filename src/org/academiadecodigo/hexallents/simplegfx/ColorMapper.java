@@ -44,10 +44,7 @@ public class ColorMapper {
             case WHITE:
                 sGfxColor = colors[6];
                 break;
-            default:
-                System.out.println("something went terribly wrong...");
         }
-
         return sGfxColor;
     }
 }
