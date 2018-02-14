@@ -5,7 +5,7 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 /**
  * Created by codecadet on 10/02/2018.
  */
-public class SimpleGfxColorMapper {
+public class ColorMapper {
 
     private static final Color colors[] = {
             Color.RED,
@@ -14,7 +14,8 @@ public class SimpleGfxColorMapper {
             Color.MAGENTA,
             Color.ORANGE,
             Color.YELLOW,
-            Color.WHITE
+            Color.WHITE,
+            Color.BLACK
     };
 
     public static Color getColor(ColorEnum color){
@@ -22,10 +23,10 @@ public class SimpleGfxColorMapper {
         Color sGfxColor = null;
 
         switch (color) {
-            case RED:
+            case BLACK:
                 sGfxColor = colors[0];
                 break;
-            case GREEN:
+            case RED:
                 sGfxColor = colors[1];
                 break;
             case BLUE:
@@ -42,9 +43,6 @@ public class SimpleGfxColorMapper {
                 break;
             case WHITE:
                 sGfxColor = colors[6];
-                break;
-            case NOCOLOR:
-                sGfxColor = colors[7];
                 break;
             default:
                 System.out.println("something went terribly wrong...");

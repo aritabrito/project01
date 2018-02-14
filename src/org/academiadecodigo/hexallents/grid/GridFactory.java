@@ -1,6 +1,6 @@
 package org.academiadecodigo.hexallents.grid;
 
-import org.academiadecodigo.hexallents.simplegfx.SimpleGfxGrid;
+import org.academiadecodigo.hexallents.simplegfx.GridGame;
 
 /**
  * Created by codecadet on 10/02/2018.
@@ -14,7 +14,7 @@ public class GridFactory {
      * @param rows     the number of rows of the grid
      * @return the new grid
      */
-    public static SimpleGfxGrid makeGrid(int cols, int rows) { // podemos incluir o cellsize se for preciso
-        return new SimpleGfxGrid(cols, rows);
+    public static GridGame makeGrid(int cols, int rows) { // podemos incluir o cellsize se for preciso
+        return new GridGame(cols, rows);
     }
 }

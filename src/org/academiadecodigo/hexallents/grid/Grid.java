@@ -1,7 +1,6 @@
 package org.academiadecodigo.hexallents.grid;
 
-import org.academiadecodigo.hexallents.grid.position.GridPosition;
-import org.academiadecodigo.hexallents.simplegfx.SimpleGfxGrid;
+import org.academiadecodigo.hexallents.simplegfx.GridGame;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 
 /**
@@ -33,7 +32,7 @@ public interface Grid {
      *
      * @return the new grid position
      */
-    public SimpleGfxGrid makeGridPosition();
+    public GridGame makeGridPosition();
 
     /**
      * Creates a a grid position in a specific column and row
@@ -42,5 +41,5 @@ public interface Grid {
      * @param row   the position row
      * @return the new grid position
      */
-    public SimpleGfxGrid makeGridPosition(int col, int row, Color color);
+    public GridGame makeGridPosition(int col, int row, Color color);
 }

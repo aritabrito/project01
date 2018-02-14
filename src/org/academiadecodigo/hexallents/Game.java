@@ -1,10 +1,9 @@
 package org.academiadecodigo.hexallents;
 
-import org.academiadecodigo.hexallents.grid.Grid;
 import org.academiadecodigo.hexallents.grid.GridFactory;
 import org.academiadecodigo.hexallents.rectangle.*;
 import org.academiadecodigo.hexallents.rectangle.Player;
-import org.academiadecodigo.hexallents.simplegfx.SimpleGfxGrid;
+import org.academiadecodigo.hexallents.simplegfx.GridGame;
 
 /**
  * Created by codecadet on 10/02/2018.
@@ -37,7 +36,7 @@ public class Game {
 
 
 
-    private SimpleGfxGrid grid;
+    private GridGame grid;
 
     private Square[][] squares;
 

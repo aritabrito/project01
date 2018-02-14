@@ -5,9 +5,17 @@ package org.academiadecodigo.hexallents;
  */
 public class Level {
 
-    // criar diferentes grids
-    // vários tamanhos de célula
-    // várias cores
+    private int[][] arrInt;
 
-    // passa um level e o game cria novo level
+
+    public int[][] level1(){
+
+        return this.arrInt = new int[][]{
+                {1, 0, 2, 0, 3},
+                {0, 0, 4, 0, 5},
+                {0, 0, 0, 0, 0},
+                {0, 2, 0, 3, 0},
+                {0, 1, 4, 5, 0}
+        };
+    }
 }

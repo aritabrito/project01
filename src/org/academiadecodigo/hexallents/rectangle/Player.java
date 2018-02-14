@@ -1,17 +1,12 @@
 package org.academiadecodigo.hexallents.rectangle;
 
-import org.academiadecodigo.hexallents.grid.Grid;
-import org.academiadecodigo.hexallents.simplegfx.ColorEnum;
-import org.academiadecodigo.hexallents.simplegfx.SimpleGfxColorMapper;
-import org.academiadecodigo.hexallents.simplegfx.SimpleGfxGrid;
+import org.academiadecodigo.hexallents.simplegfx.GridGame;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.mouse.Mouse;
 import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
 import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
 import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
-
-import java.awt.event.MouseListener;
 
 /**
  * Created by codecadet on 10/02/2018.
@@ -20,11 +15,11 @@ public class Player implements MouseHandler {
     private Rectangle rectangle;
     private Mouse myMouse;
     private Square[][] squares;
-    private SimpleGfxGrid grid;
+    private GridGame grid;
     private Color color;
     private boolean selected;
 
-    public Player(SimpleGfxGrid grid) {
+    public Player(GridGame grid) {
         myMouse = new Mouse(this);
         this.grid = grid;
         squares = SquareFactory.getRectangles(grid);
@@ -77,8 +72,8 @@ public class Player implements MouseHandler {
 
 
                 // adquire a cor e arrasta
-            /*toTest.translate(SimpleGfxGrid.CELL_SIZE,SimpleGfxGrid.PADDING);
-            Square test = new Square(grid.makeGridPosition(0,1,SimpleGfxColorMapper.getColor(colors[2])));
+            /*toTest.translate(GridGame.CELL_SIZE,GridGame.PADDING);
+            Square test = new Square(grid.makeGridPosition(0,1,ColorMapper.getColor(colors[2])));
             test.fill();*/
                 System.out.println("fora");
             }
@@ -99,8 +94,6 @@ public class Player implements MouseHandler {
     public void mouseMoved(MouseEvent mouseEvent) {
         if (selected) {
 
-            grid.getBackground().setColor(color);
-            System.out.println("PINTA CARALHO!!!!!!!!!!!!");
         }
 
     }

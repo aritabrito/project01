@@ -1,9 +1,7 @@
 package org.academiadecodigo.hexallents.grid.position;
 
 import org.academiadecodigo.hexallents.grid.Grid;
-import org.academiadecodigo.hexallents.simplegfx.ColorEnum;
-import org.academiadecodigo.hexallents.simplegfx.SimpleGfxColorMapper;
-import org.academiadecodigo.hexallents.simplegfx.SimpleGfxGrid;
+import org.academiadecodigo.hexallents.simplegfx.GridGame;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 
 /**
@@ -22,7 +20,7 @@ public class AbstractGridPosition implements GridPosition {
      * @param row   the row of the grid position
      * @param grid  the grid in which the position will be displayed
      */
-    public AbstractGridPosition(int col, int row, SimpleGfxGrid grid) {
+    public AbstractGridPosition(int col, int row, GridGame grid) {
         this.col = col;
         this.row = row;
         this.grid = grid;
@@ -79,7 +77,7 @@ public class AbstractGridPosition implements GridPosition {
 
     /*@Override
    public void setColor(ColorEnum color) {
-        this.color = SimpleGfxColorMapper.getColor(color);
+        this.color = ColorMapper.getColor(color);
     }*/
 
     @Override

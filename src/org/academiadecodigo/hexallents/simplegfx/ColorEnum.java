@@ -11,5 +11,5 @@ public enum ColorEnum {
     ORANGE,
     YELLOW,
     WHITE,
-    NOCOLOR
+    BLACK
 }
