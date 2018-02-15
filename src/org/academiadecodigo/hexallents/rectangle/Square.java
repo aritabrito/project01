@@ -1,6 +1,5 @@
 package org.academiadecodigo.hexallents.rectangle;
 
-import org.academiadecodigo.hexallents.grid.Grid;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
@@ -13,7 +12,7 @@ public abstract class Square{
     private Rectangle rectangle;
     private int col;
     private int row;
-    private Color color;
+    protected Color color;
 
     public Square(int col, int row, Color color) {
        this.col = col;
@@ -27,4 +26,15 @@ public abstract class Square{
         rectangle.fill();
     }
 
+    public int getCol() {
+        return col;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public Rectangle getRectangle() {
+        return rectangle;
+    }
 }

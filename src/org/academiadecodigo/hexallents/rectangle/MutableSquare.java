@@ -11,4 +11,8 @@ public class MutableSquare extends Square {
         super(col, row, color);
 
     }
+
+    public void setColor(Color color){
+        super.color = color;
+    }
 }

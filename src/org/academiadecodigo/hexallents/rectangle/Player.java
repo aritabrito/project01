@@ -16,6 +16,7 @@ public class Player implements MouseHandler {
     private Mouse myMouse;
     private GridGame grid;
     private boolean selected;
+    private int selectedColor;
 
     public Player(GridGame grid) {
         this.grid = grid;
@@ -35,12 +36,19 @@ public class Player implements MouseHandler {
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
 
+
+        if((grid.getSquare((int)mouseEvent.getX(),(int)mouseEvent.getY())) == 0){
+            selected = true;
+            selectedColor = grid.getColor((int)mouseEvent.getX(),(int)mouseEvent.getY());
+        }
     }
 
     @Override
     public void mouseMoved(MouseEvent mouseEvent) {
         if (selected) {
-
+            if((grid.getSquare((int)mouseEvent.getX(),(int)mouseEvent.getY())) != 0){
+                grid.setColor((int)mouseEvent.getX(),(int)mouseEvent.getY(),selectedColor);
+            }
         }
 
     }
