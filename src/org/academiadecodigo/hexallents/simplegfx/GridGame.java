@@ -24,21 +24,23 @@ public class GridGame implements Grid {
     public GridGame() {
         level = new Level();
         currentLevel = level.level1();
-        cols = currentLevel.length;
-        rows = currentLevel.length;
+        cols = currentLevel.length - 1;
+        rows = currentLevel.length - 1;
     }
 
     @Override
     public void init() {
 
-        for (int i = PADDING; i < cols; i += CELL_SIZE) {
-            for (int j = PADDING; j < rows; j += CELL_SIZE) {
+        for (int i = 0; i < currentLevel.length; i++) {
+            for (int j = 0; j < currentLevel[i].length; j++) {
                 if (currentLevel[i][j] == 0) {
-                    new MutableSquare(i, j, ColorMapper.getColor(ColorEnum.BLACK));
+                    MutableSquare mSq = new MutableSquare(i, j, ColorMapper.getColor(ColorEnum.BLACK));
+                    mSq.setSquare(j * CELL_SIZE + PADDING, i *  CELL_SIZE + PADDING, CELL_SIZE, CELL_SIZE);
                 }
                 for (int k = 1; k < ColorEnum.values().length; k++) {
                     if (currentLevel[i][j] == k) {
-                        new ImmutableSquare(i, j, ColorMapper.getColor(ColorEnum.values()[k]));
+                        ImmutableSquare iSq = new ImmutableSquare(i, j, ColorMapper.getColor(ColorEnum.values()[k]));
+                        iSq.setSquare(j * CELL_SIZE + PADDING, i *  CELL_SIZE + PADDING, CELL_SIZE, CELL_SIZE);
                     }
                 }
             }

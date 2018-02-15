@@ -8,14 +8,15 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 public class ColorMapper {
 
     private static final Color colors[] = {
+            Color.BLACK,
             Color.RED,
-            Color.GREEN,
             Color.BLUE,
             Color.MAGENTA,
             Color.ORANGE,
             Color.YELLOW,
+            Color.GREEN,
             Color.WHITE,
-            Color.BLACK
+
     };
 
     public static Color getColor(ColorEnum color){
@@ -41,8 +42,11 @@ public class ColorMapper {
             case YELLOW:
                 sGfxColor = colors[5];
                 break;
-            case WHITE:
+            case GREEN:
                 sGfxColor = colors[6];
+                break;
+            case WHITE:
+                sGfxColor = colors[7];
                 break;
         }
         return sGfxColor;

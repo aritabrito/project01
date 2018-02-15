@@ -6,7 +6,7 @@ public class ImmutableSquare extends Square {
     private final Color COLOR;
 
     public ImmutableSquare(int col, int row, Color color) {
-        super(col, row);
+        super(col, row, color);
         COLOR = color;
     }
 
