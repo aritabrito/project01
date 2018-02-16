@@ -13,6 +13,7 @@ public class Game {
 
     Game() {
         grid = new GridGame();
+        player = new Player(grid);
     }
 
     /**
@@ -22,8 +23,6 @@ public class Game {
 
         grid.init();
 
-        player = new Player(grid);
-        grid = new GridGame();
         player.keyEvents();
     }
 

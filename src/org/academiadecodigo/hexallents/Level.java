@@ -5,12 +5,10 @@ package org.academiadecodigo.hexallents;
  */
 public class Level {
 
-    private int[][] arrInt;
-
 
     public int[][] level1(){
 
-        return this.arrInt = new int[][]{
+        return  new int[][]{
                 {1, 0, 2, 0, 3},
                 {0, 0, 4, 0, 5},
                 {0, 0, 0, 0, 0},
