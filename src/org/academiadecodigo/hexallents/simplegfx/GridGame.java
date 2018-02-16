@@ -58,20 +58,18 @@ public class GridGame {
         int xS = conversionXY(x);
         int yS = conversionXY(y);
 
-        return squares[xS][yS];
+        return squares[yS][xS];
     }
 
     public Color getColor(Square sqr) {
-        if (sqr instanceof ImmutableSquare) {
             return sqr.getColor();
-        }
-        return null;
     }
 
-    public void setColor(int x, int y, Color color) {
-        int xS = conversionXY(x);
-        int yS = conversionXY(y);
-        squares[xS][yS].setColor(color);
+    public void setColor(double x, double y, Color color) {
+        int xS = conversionXY((int)x);
+        int yS = conversionXY((int)y);
+        System.out.println(xS + " SETCOLOR" + yS);
+        squares[yS][xS].setColor(color);
     }
 
     public int conversionXY(int xOrY) {

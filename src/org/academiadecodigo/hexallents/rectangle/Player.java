@@ -42,9 +42,12 @@ public class Player implements MouseHandler {
 
         selected = true;
 
+        if (grid.getColor(selectedSquare) == null){
+            return;
+        }
         selectedColor = grid.getColor(selectedSquare);
 
-        System.out.println(grid.getColor(selectedSquare));
+        System.out.println(selectedColor);
 
         System.out.println(selected + " CLICK");
     }
@@ -52,7 +55,10 @@ public class Player implements MouseHandler {
     @Override
     public void mouseMoved(MouseEvent mouseEvent) {
         if (selected) {
-            grid.setColor((int) mouseEvent.getX(), (int) mouseEvent.getY(), selectedColor);
+            if(mouseEvent.getX()> 500 && mouseEvent.getY()>500){
+                return;
+            }
+            grid.setColor( mouseEvent.getX(), mouseEvent.getY(), selectedColor);
             System.out.println("move");
         }
     }

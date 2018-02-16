@@ -44,7 +44,7 @@ public abstract class Square {
 
     public void setColor(Color color) {
         this.color = color;
-        rectangle.fill();
+        rectangle.setColor(this.color);
     }
 }
 
