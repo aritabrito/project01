@@ -47,7 +47,6 @@ public abstract class Square {
         return y2;
     }
 
-
     @Override
     public String toString() {
         return "Square{" +
