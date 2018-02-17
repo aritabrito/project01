@@ -5,9 +5,6 @@ import org.academiadecodigo.hexallents.rectangle.ImmutableSquare;
 import org.academiadecodigo.hexallents.rectangle.MutableSquare;
 import org.academiadecodigo.hexallents.rectangle.Square;
 import org.academiadecodigo.simplegraphics.graphics.Color;
-import sun.text.resources.ro.CollationData_ro;
-
-import java.util.Arrays;
 
 /**
  * Created by codecadet on 10/02/2018.
@@ -30,21 +27,21 @@ public class GridGame {
         int gridSize = currentLevel.length;
 
         squares = new Square[gridSize][gridSize];
+
         for (int i = 0; i < currentLevel.length; i++) {
 
             for (int j = 0; j < currentLevel[i].length; j++) {
 
 
-
                 if (currentLevel[i][j] == 0) {
                     System.out.println("CREATING IMMUTABLE SQAURE");
-                    squares[i][j] = new MutableSquare(i, j, ColorMapper.getColor(ColorEnum.BLACK));
+                    squares[i][j] = new MutableSquare(j, i, ColorMapper.getColor(ColorEnum.BLACK));
                     squares[i][j].setSquare(j * CELL_SIZE + PADDING, i * CELL_SIZE + PADDING,
                             CELL_SIZE, CELL_SIZE);
                 }
                 for (int k = 1; k < ColorEnum.values().length; k++) {
                     if (currentLevel[i][j] == k) {
-                        squares[i][j] = new ImmutableSquare(i, j, ColorMapper.getColor(ColorEnum.values()[k]));
+                        squares[i][j] = new ImmutableSquare(j, i, ColorMapper.getColor(ColorEnum.values()[k]));
                         squares[i][j].setSquare(j * CELL_SIZE + PADDING, i * CELL_SIZE + PADDING,
                                 CELL_SIZE, CELL_SIZE);
                     }
@@ -55,6 +52,7 @@ public class GridGame {
 
 
     public Square getSquare(int x, int y) {
+
         int xS = conversionXY(x);
         int yS = conversionXY(y);
 
@@ -62,19 +60,30 @@ public class GridGame {
     }
 
     public Color getColor(Square sqr) {
+        if (sqr instanceof ImmutableSquare) {
             return sqr.getColor();
+        }
+        return null;
     }
 
-    public void setColor(double x, double y, Color color) {
-        int xS = conversionXY((int)x);
-        int yS = conversionXY((int)y);
-        System.out.println(xS + " SETCOLOR" + yS);
-        squares[yS][xS].setColor(color);
+    public void setColor(Square sqr, Color color) {
+        if (sqr instanceof MutableSquare) {
+            sqr.setColor(color);
+        }
     }
 
     public int conversionXY(int xOrY) {
-        return (xOrY + PADDING) / CELL_SIZE;
+        return (xOrY / CELL_SIZE);
     }
+
+    public int rowToY(int row) {
+        return CELL_SIZE * row + PADDING;
+    }
+
+    public int columnToX(int column) {
+        return CELL_SIZE * column + PADDING;
+    }
+
    /* @Override
     public int getCols() {
         return cols;
@@ -99,9 +108,7 @@ public class GridGame {
         return null;
     }
 
-    public int rowToY(int row) {
-        return CELL_SIZE * row + PADDING;
-    }
+
 
     /**
      * Auxiliary method to compute the x value that corresponds to a specific column
@@ -109,9 +116,7 @@ public class GridGame {
      * @param column index
      * @return x pixel value
 
-    public int columnToX(int column) {
-        return CELL_SIZE * column + PADDING;
-    }
+
 */
 
 }
