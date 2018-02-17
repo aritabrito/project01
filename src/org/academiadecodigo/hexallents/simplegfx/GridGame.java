@@ -5,14 +5,13 @@ import org.academiadecodigo.hexallents.rectangle.ImmutableSquare;
 import org.academiadecodigo.hexallents.rectangle.MutableSquare;
 import org.academiadecodigo.hexallents.rectangle.Square;
 import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
-/**
- * Created by codecadet on 10/02/2018.
- */
 public class GridGame {
 
     public static final int PADDING = 10;
     public final static int CELL_SIZE = 100;
+    private Rectangle gridLine;
     private Square[][] squares;
     private int[][] currentLevel;
     private Level level;
@@ -20,30 +19,39 @@ public class GridGame {
 
     public GridGame() {
         level = new Level();
-        currentLevel = level.level3();
+        currentLevel = level.level2();
+        int gridSize = currentLevel.length;
+        squares = new Square[gridSize][gridSize];
     }
 
     public void init() {
-        int gridSize = currentLevel.length;
+
         System.out.println("initiating game");
 
-        squares = new Square[gridSize][gridSize];
 
         for (int i = 0; i < currentLevel.length; i++) {
 
             for (int j = 0; j < currentLevel[i].length; j++) {
 
-
                 if (currentLevel[i][j] == 0) {
                     squares[i][j] = new MutableSquare(j, i, ColorMapper.getColor(ColorEnum.BLACK));
                     squares[i][j].setSquare(j * CELL_SIZE + PADDING, i * CELL_SIZE + PADDING,
                             CELL_SIZE, CELL_SIZE);
+                    gridLine = new Rectangle(j * CELL_SIZE + PADDING, i * CELL_SIZE + PADDING,
+                            CELL_SIZE, CELL_SIZE);
+                    gridLine.setColor(Color.DARK_GRAY);
+                    gridLine.draw();
+
                 }
                 for (int k = 1; k < ColorEnum.values().length; k++) {
                     if (currentLevel[i][j] == k) {
                         squares[i][j] = new ImmutableSquare(j, i, ColorMapper.getColor(ColorEnum.values()[k]));
                         squares[i][j].setSquare(j * CELL_SIZE + PADDING, i * CELL_SIZE + PADDING,
                                 CELL_SIZE, CELL_SIZE);
+                        gridLine = new Rectangle(j * CELL_SIZE + PADDING, i * CELL_SIZE + PADDING,
+                                CELL_SIZE, CELL_SIZE);
+                        gridLine.setColor(Color.DARK_GRAY);
+                        gridLine.draw();
                     }
                 }
             }
@@ -84,39 +92,10 @@ public class GridGame {
         return CELL_SIZE * column + PADDING;
     }
 
-   /* @Override
-    public int getCols() {
-        return cols;
+    public Square[][] getSquares() {
+        return squares;
     }
-
-    /**
-     * @see Grid#getRows()
-
-    @Override
-    public int getRows() {
-        return rows;
+    public void setLevel(Level level){
+        this.level = level;
     }
-
-
-    @Override
-    public GridGame makeGridPosition() {
-        return null;
-    }
-
-    @Override
-    public GridGame makeGridPosition(int col, int row, Color color) {
-        return null;
-    }
-
-
-
-    /**
-     * Auxiliary method to compute the x value that corresponds to a specific column
-     *
-     * @param column index
-     * @return x pixel value
-
-
-*/
-
 }
