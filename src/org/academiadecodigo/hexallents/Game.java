@@ -16,21 +16,12 @@ public class Game {
         player = new Player(grid);
     }
 
-    /**
-     * Creates a bunch of cars and randomly puts them in the field
-     */
     public void init() {
 
         grid.init();
-
         player.keyEvents();
     }
 
-    /**
-     * Starts the animation
-     *
-     * @throws InterruptedException
-     */
     public void start() {
 
         while (true) {

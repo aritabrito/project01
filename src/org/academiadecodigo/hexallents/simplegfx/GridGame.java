@@ -20,11 +20,12 @@ public class GridGame {
 
     public GridGame() {
         level = new Level();
-        currentLevel = level.level1();
+        currentLevel = level.level3();
     }
 
     public void init() {
         int gridSize = currentLevel.length;
+        System.out.println("initiating game");
 
         squares = new Square[gridSize][gridSize];
 
@@ -34,7 +35,6 @@ public class GridGame {
 
 
                 if (currentLevel[i][j] == 0) {
-                    System.out.println("CREATING IMMUTABLE SQAURE");
                     squares[i][j] = new MutableSquare(j, i, ColorMapper.getColor(ColorEnum.BLACK));
                     squares[i][j].setSquare(j * CELL_SIZE + PADDING, i * CELL_SIZE + PADDING,
                             CELL_SIZE, CELL_SIZE);

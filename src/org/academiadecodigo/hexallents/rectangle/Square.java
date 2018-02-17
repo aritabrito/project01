@@ -48,7 +48,11 @@ public abstract class Square {
     }
 
 
-
-
+    @Override
+    public String toString() {
+        return "Square{" +
+                "color=" + color +
+                '}';
+    }
 }
 

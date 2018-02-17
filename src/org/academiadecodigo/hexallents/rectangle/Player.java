@@ -1,20 +1,11 @@
 package org.academiadecodigo.hexallents.rectangle;
-
-import org.academiadecodigo.hexallents.simplegfx.ColorEnum;
-import org.academiadecodigo.hexallents.simplegfx.ColorMapper;
 import org.academiadecodigo.hexallents.simplegfx.GridGame;
 import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.mouse.Mouse;
 import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
 import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
 import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 
-import java.lang.invoke.SwitchPoint;
-
-/**
- * Created by codecadet on 10/02/2018.
- */
 public class Player implements MouseHandler {
 
     private Mouse myMouse;
@@ -44,34 +35,37 @@ public class Player implements MouseHandler {
 
         selectedSquare = grid.getSquare((int) mouseEvent.getX(), (int) mouseEvent.getY());
 
-        System.out.println((int) mouseEvent.getX() + " mouse " + (int) mouseEvent.getY());
         if (!selected) {
             selected = true;
-
-            if (grid.getColor(selectedSquare) == null && selectedSquare == null) {
+            System.out.println("SELECTED " + selectedSquare.toString());
+            if (grid.getColor(selectedSquare) == null || selectedSquare == null) {
                 return;
             }
             selectedColor = grid.getColor(selectedSquare);
-
-            System.out.println(selectedColor);
-
-            System.out.println(selected + " CLICK");
+        } else {
+            grid.init();
+            selected = false;
+            selectedSquare = null;
+            selectedColor = null;
         }
     }
 
     @Override
     public void mouseMoved(MouseEvent mouseEvent) {
 
+        if (selectedSquare == null || selectedColor == null) {
+            return;
+        }
+
         if (selected) {
             currentSquare = grid.getSquare((int) mouseEvent.getX(), (int) mouseEvent.getY());
 
             if (currentSquare instanceof ImmutableSquare && !currentSquare.equals(selectedSquare) &&
                     currentSquare.getColor().equals(selectedColor)) {
-                System.out.println("PÁRA!!!!");
                 selected = false;
                 return;
             }
-            if (currentSquare.getColor() == ColorMapper.getColor(ColorEnum.BLACK)) {
+            if (currentSquare.getColor() == Color.BLACK) {
 
                 if (currentSquare.getY2() <= selectedSquare.getY2() + GridGame.CELL_SIZE ||
                         currentSquare.getX2() <= selectedSquare.getX2() + GridGame.CELL_SIZE ||
@@ -81,9 +75,7 @@ public class Player implements MouseHandler {
 
                     grid.setColor(currentSquare, selectedColor);
                 }
-
             }
-            return;
         }
     }
 
