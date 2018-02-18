@@ -1,4 +1,4 @@
-package org.academiadecodigo.hexallents.simplegfx;
+package org.academiadecodigo.hexallents.gameEngine;
 
 /**
  * Created by codecadet on 11/02/2018.

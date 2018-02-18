@@ -1,8 +1,7 @@
-package org.academiadecodigo.hexallents.rectangle;
+package org.academiadecodigo.hexallents.gameEngine;
 
-import org.academiadecodigo.hexallents.simplegfx.ColorEnum;
-import org.academiadecodigo.hexallents.simplegfx.ColorMapper;
-import org.academiadecodigo.hexallents.simplegfx.GridGame;
+import org.academiadecodigo.hexallents.squares.ImmutableSquare;
+import org.academiadecodigo.hexallents.squares.Square;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.mouse.Mouse;
 import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
@@ -36,18 +35,20 @@ public class Player implements MouseHandler {
 
         selectedSquare = grid.getSquare((int) mouseEvent.getX(), (int) mouseEvent.getY());
 
-        if (!selected) {
+        System.out.println("CLICK. --------------------------------------------------------------");
+        if (!selected && !selectedSquare.isUsed() && selectedSquare.getColor() != Color.BLACK) {
             selected = true;
             System.out.println("SELECTED " + selectedSquare.toString());
             if (grid.getColor(selectedSquare) == null || selectedSquare == null) {
+                System.out.println("clicking null squares");
                 return;
             }
+            selectedSquare.setUsed(true);
             selectedColor = grid.getColor(selectedSquare);
         } else {
-            grid.init();
+            grid.setColor(selectedSquare, Color.BLACK);
+            selectedSquare.setUsed(false);
             selected = false;
-            selectedSquare = null;
-            selectedColor = null;
         }
     }
 
@@ -64,6 +65,8 @@ public class Player implements MouseHandler {
             if (currentSquare instanceof ImmutableSquare && !currentSquare.equals(selectedSquare) &&
                     currentSquare.getColor().equals(selectedColor)) {
                 selected = false;
+                currentSquare.setUsed(true);
+                System.out.println("PAIRED ------------------------------------------------------");
                 return;
             }
             if (currentSquare.getColor() == Color.BLACK) {
@@ -71,20 +74,14 @@ public class Player implements MouseHandler {
                 if (currentSquare.getY2() <= selectedSquare.getY2() + GridGame.CELL_SIZE ||
                         currentSquare.getX2() <= selectedSquare.getX2() + GridGame.CELL_SIZE ||
                         currentSquare.getY2() <= selectedSquare.getY2() - GridGame.CELL_SIZE ||
-                        currentSquare.getX2() <= selectedSquare.getX2() - GridGame.CELL_SIZE) {
+                        currentSquare.getX2() <= selectedSquare.getX2() - GridGame.CELL_SIZE &&
+                                !currentSquare.isUsed()) {
 
-
+                    currentSquare.setUsed(true);
                     grid.setColor(currentSquare, selectedColor);
                 }
             }
         }
-    }
-
-
-
-    private boolean inBounds(double x, double y) {
-        return x < grid.columnToX(5) && y < grid.rowToY(5);
-
     }
 }
 

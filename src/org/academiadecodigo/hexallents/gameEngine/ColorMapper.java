@@ -1,4 +1,4 @@
-package org.academiadecodigo.hexallents.simplegfx;
+package org.academiadecodigo.hexallents.gameEngine;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 

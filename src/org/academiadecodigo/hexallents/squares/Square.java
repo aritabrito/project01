@@ -1,4 +1,4 @@
-package org.academiadecodigo.hexallents.rectangle;
+package org.academiadecodigo.hexallents.squares;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
@@ -12,6 +12,7 @@ public abstract class Square {
     private Rectangle rectangle;
     private int col;
     private int row;
+    private boolean used;
     protected Color color;
     private int x2;
     private int y2;
@@ -22,7 +23,7 @@ public abstract class Square {
         this.color = color;
     }
 
-    public void setSquare(int x1, int y1, int x2, int y2) {
+    public void show(int x1, int y1, int x2, int y2) {
         this.x2 = x2;
         this.y2 = y2;
         this.rectangle = new Rectangle(x1, y1, x2, y2);
@@ -45,6 +46,17 @@ public abstract class Square {
 
     public int getY2() {
         return y2;
+    }
+
+    public boolean isUsed() {
+        return used;
+    }
+
+    public void setUsed(boolean used) {
+        this.used = used;
+    }
+    public void hide(){
+        rectangle.delete();
     }
 
     @Override

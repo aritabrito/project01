@@ -1,4 +1,4 @@
-package org.academiadecodigo.hexallents.rectangle;
+package org.academiadecodigo.hexallents.squares;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 
 
