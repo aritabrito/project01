@@ -14,6 +14,7 @@ public class GridGame {
     private Rectangle gridLine;
     private Square[][] squares;
     private int[][] currentLevel;
+    private int levelInt;
 
 
     public GridGame() {
@@ -27,7 +28,7 @@ public class GridGame {
         }
 
         squares = new Square[currentLevel.length][currentLevel.length];
-        System.out.println( "LEVEL LENGTH " + currentLevel.length + "jkwbfkjbbsdjbfskjdbfjkbsdjfbskjdfbsjkfbskdbfjksbdfkjbsdjkfbsjkdbfjkbfdjkbsjkdbfjksfbjskdb");
+        System.out.println("LEVEL LENGTH " + currentLevel.length + "jkwbfkjbbsdjbfskjdbfjkbsdjfbskjdfbsjkfbskdbfjksbdfkjbsdjkfbsjkdbfjkbfdjkbsjkdbfjksfbjskdb");
 
         System.out.println("initiating game");
         for (int i = 0; i < currentLevel.length; i++) {
@@ -74,6 +75,10 @@ public class GridGame {
         return squares[yS][xS];
     }
 
+    public Square[][] getSquares() {
+        return squares;
+    }
+
     public Color getColor(Square sqr) {
         if (sqr instanceof ImmutableSquare) {
             return sqr.getColor();
@@ -96,19 +101,24 @@ public class GridGame {
     }
 
     public boolean checkIfComplete() {
-        for (int i = 0; i < squares.length; i++) {
-            for (int j = 0; j < squares[i].length; j++) {
-                if (squares[j][i].getColor().equals(Color.BLACK) && !squares[j][i].isUsed()) {
-                    return false;
+        if (!squares.equals(null)) {
+            for (int i = 0; i < squares.length; i++) {
+                for (int j = 0; j < squares[i].length; j++) {
+
+                    if (squares[j][i].getColor().equals(Color.BLACK) && !squares[j][i].isUsed()) {
+                        return false;
+                    }
                 }
             }
+            return true;
+        } else {
+            return false;
         }
-        return true;
     }
 
-
     public void nextLevel(int i) {
-        currentLevel = level.setLevel(i);
+        levelInt = i;
+        currentLevel = level.setLevel(levelInt);
     }
 
     public void deleteLevel() {

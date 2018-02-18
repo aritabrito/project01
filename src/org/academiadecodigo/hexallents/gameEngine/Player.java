@@ -3,23 +3,33 @@ package org.academiadecodigo.hexallents.gameEngine;
 import org.academiadecodigo.hexallents.squares.ImmutableSquare;
 import org.academiadecodigo.hexallents.squares.Square;
 import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.mouse.Mouse;
 import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
 import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
 import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 
-public class Player implements MouseHandler {
+public class Player implements MouseHandler, KeyboardHandler {
 
     private Mouse myMouse;
+    private Keyboard myKeyboard;
     private GridGame grid;
     private boolean selected;
     private Color selectedColor;
     private Square selectedSquare;
     private Square currentSquare;
+    private Game game;
+    private Menu menu;
 
-    public Player(GridGame grid) {
+    public Player(GridGame grid, Game game, Menu menu) {
+        this.menu = menu;
+        this.game = game;
         this.grid = grid;
         myMouse = new Mouse(this);
+        myKeyboard = new Keyboard(this);
         selected = false;
     }
 
@@ -27,6 +37,14 @@ public class Player implements MouseHandler {
 
         myMouse.addEventListener(MouseEventType.MOUSE_CLICKED);
         myMouse.addEventListener(MouseEventType.MOUSE_MOVED);
+
+        KeyboardEvent sKEY = new KeyboardEvent();
+        sKEY.setKey(KeyboardEvent.KEY_S);
+        KeyboardEvent spaceKey = new KeyboardEvent();
+        spaceKey.setKey(KeyboardEvent.KEY_SPACE);
+        spaceKey.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        sKEY.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        myKeyboard.addEventListener(sKEY);
 
     }
 
@@ -83,6 +101,23 @@ public class Player implements MouseHandler {
             }
         }
     }
+
+    @Override
+    public void keyPressed(KeyboardEvent keyboardEvent) {
+
+
+        if(keyboardEvent.getKey() == KeyboardEvent.KEY_S){
+            menu.hideImage();
+        }
+       // grid.initGrid();
+    }
+
+    @Override
+    public void keyReleased(KeyboardEvent keyboardEvent) {
+
+    }
+
+
 }
 
 
