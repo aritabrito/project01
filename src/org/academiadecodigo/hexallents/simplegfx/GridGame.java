@@ -19,7 +19,7 @@ public class GridGame {
 
     public GridGame() {
         level = new Level();
-        currentLevel = level.level2();
+        currentLevel = level.level4();
         int gridSize = currentLevel.length;
         squares = new Square[gridSize][gridSize];
     }
