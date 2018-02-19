@@ -133,7 +133,7 @@ public class GridGame {
     public void noMoreLevels() {
         if (currentLevel == null) {
             picture = new Picture();
-            picture.load("/Users/codecadet/Desktop/ProjectGame/project01/resources/flow-free-04.png");
+            picture.load("resources/flow-free-04.png");
             picture.translate(10, 10);
             picture.draw();
         }
