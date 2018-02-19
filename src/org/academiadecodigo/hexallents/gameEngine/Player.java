@@ -34,13 +34,11 @@ public class Player implements MouseHandler {
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
 
-        System.out.println(mouseEvent.getX() + " " + mouseEvent.getY());
         selectedSquare = grid.getSquare((int) mouseEvent.getX(), (int) mouseEvent.getY());
         System.out.println(selectedSquare);
         System.out.println("CLICK. --------------------------------------------------------------");
         if (!selected && !selectedSquare.isUsed() && selectedSquare.getColor() != Color.BLACK) {
             selected = true;
-            System.out.println("SELECTED " + selectedSquare.toString());
             if (grid.getColor(selectedSquare) == null || selectedSquare == null) {
                 System.out.println("clicking null squares");
                 return;
@@ -68,7 +66,7 @@ public class Player implements MouseHandler {
                     currentSquare.getColor().equals(selectedColor)) {
                 selected = false;
                 currentSquare.setUsed(true);
-                System.out.println("PAIRED ------------------------------------------------------");
+                System.out.println("PAIRED. -------------------------------------------------------------");
                 return;
             }
             if (currentSquare.getColor() == Color.BLACK) {
