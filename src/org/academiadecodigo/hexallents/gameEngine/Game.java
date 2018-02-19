@@ -1,32 +1,38 @@
 package org.academiadecodigo.hexallents.gameEngine;
 
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 
 public class Game {
+    private static GameState gameState;
+
     private Menu menu;
     private GridGame grid;
     private Player player;
     private int currentLevel = 1;
 
     public Game() {
-        menu = new Menu();
-        player = new Player(grid, this, menu);
-        grid = new GridGame();
+        gameState = GameState.MENU;
     }
 
-
-    public boolean menu(){
-        menu.showImage();
-        if(player.keyPressed(KeyboardEvent.);)
-    }
     public void init() {
+        while (gameState != GameState.NONE) {
+            switch (gameState) {
+                case MENU:
+                    menu = new Menu();
 
-        grid.nextLevel(currentLevel);
-        grid.initGrid();
+                    break;
+                case INGAME:
+                    player = new Player(grid);
+                    grid = new GridGame();
+                    grid.nextLevel(currentLevel);
+                    grid.initGrid();
+                    player.keyEvents();
+                    checkVictory();
+                    break;
+            }
+        }
 
-        player.keyEvents();
-        checkVictory();
+
     }
 
     public void checkVictory() {
@@ -42,6 +48,10 @@ public class Game {
                 init();
             }
         }
+    }
+
+    public static void setGameState(GameState gameState) {
+        Game.gameState = gameState;
     }
 }
 

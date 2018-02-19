@@ -21,12 +21,8 @@ public class Player implements MouseHandler, KeyboardHandler {
     private Color selectedColor;
     private Square selectedSquare;
     private Square currentSquare;
-    private Game game;
-    private Menu menu;
 
-    public Player(GridGame grid, Game game, Menu menu) {
-        this.menu = menu;
-        this.game = game;
+    public Player(GridGame grid) {
         this.grid = grid;
         myMouse = new Mouse(this);
         myKeyboard = new Keyboard(this);
@@ -38,13 +34,9 @@ public class Player implements MouseHandler, KeyboardHandler {
         myMouse.addEventListener(MouseEventType.MOUSE_CLICKED);
         myMouse.addEventListener(MouseEventType.MOUSE_MOVED);
 
-        KeyboardEvent sKEY = new KeyboardEvent();
-        sKEY.setKey(KeyboardEvent.KEY_S);
         KeyboardEvent spaceKey = new KeyboardEvent();
         spaceKey.setKey(KeyboardEvent.KEY_SPACE);
         spaceKey.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        sKEY.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        myKeyboard.addEventListener(sKEY);
 
     }
 
@@ -104,12 +96,9 @@ public class Player implements MouseHandler, KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
-
-
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_S){
-            menu.hideImage();
+            grid.initGrid();
         }
-       // grid.initGrid();
     }
 
     @Override

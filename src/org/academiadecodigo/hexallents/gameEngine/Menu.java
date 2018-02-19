@@ -1,9 +1,34 @@
 package org.academiadecodigo.hexallents.gameEngine;
 
+import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class Menu {
+public class Menu implements KeyboardHandler{
     private Picture picture;
+    private Keyboard myKeyboard;
+
+    public Menu(){
+        myKeyboard = new Keyboard(this);
+        keyEvents();
+        showImage();
+    }
+
+    public void keyEvents() {
+
+        KeyboardEvent sKEY = new KeyboardEvent();
+        sKEY.setKey(KeyboardEvent.KEY_S);
+        KeyboardEvent spaceKey = new KeyboardEvent();
+        spaceKey.setKey(KeyboardEvent.KEY_SPACE);
+        spaceKey.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        sKEY.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        myKeyboard.addEventListener(sKEY);
+
+    }
+
 
     public void showImage(){
         picture = new Picture();
@@ -16,4 +41,16 @@ public class Menu {
         picture.delete();
     }
 
+    @Override
+    public void keyPressed(KeyboardEvent keyboardEvent) {
+        if(keyboardEvent.getKey() == KeyboardEvent.KEY_S){
+            hideImage();
+            Game.setGameState(GameState.INGAME);
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyboardEvent keyboardEvent) {
+
+    }
 }
