@@ -5,6 +5,7 @@ import org.academiadecodigo.hexallents.squares.MutableSquare;
 import org.academiadecodigo.hexallents.squares.Square;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class GridGame {
 
@@ -15,10 +16,12 @@ public class GridGame {
     private Square[][] squares;
     private int[][] currentLevel;
     private int levelInt;
+    private Picture picture;
 
 
     public GridGame() {
         level = new Level();
+
     }
 
     public void initGrid() {
@@ -27,12 +30,13 @@ public class GridGame {
             deleteLevel();
         }
 
+        if (currentLevel == null) {
+            noMoreLevels();
+        }
+
         squares = new Square[currentLevel.length][currentLevel.length];
-        System.out.println("LEVEL LENGTH " + currentLevel.length + "jkwbfkjbbsdjbfskjdbfjkbsdjfbskjdfbsjkfbskdbfjksbdfkjbsdjkfbsjkdbfjkbfdjkbsjkdbfjksfbjskdb");
 
-        System.out.println("initiating game");
         for (int i = 0; i < currentLevel.length; i++) {
-
             for (int j = 0; j < currentLevel[i].length; j++) {
 
                 if (currentLevel[i][j] == 0) {
@@ -40,7 +44,6 @@ public class GridGame {
                     squares[i][j].show(j * CELL_SIZE + PADDING, i * CELL_SIZE + PADDING,
                             CELL_SIZE, CELL_SIZE);
                     squares[i][j].setUsed(false);
-
 
                     gridLine = new Rectangle(j * CELL_SIZE + PADDING, i * CELL_SIZE + PADDING,
                             CELL_SIZE, CELL_SIZE);
@@ -67,11 +70,8 @@ public class GridGame {
 
 
     public Square getSquare(int x, int y) {
-        System.out.println(x + "  " + y);
         int xS = conversionX(x);
         int yS = conversionY(y);
-        System.out.println(xS + " " + yS);
-        System.out.println("RETORNO DO QUADRADO " + yS + " " + xS);
         return squares[yS][xS];
     }
 
@@ -119,14 +119,23 @@ public class GridGame {
     public void nextLevel(int i) {
         levelInt = i;
         currentLevel = level.setLevel(levelInt);
+        noMoreLevels();
     }
 
     public void deleteLevel() {
         for (int i = 0; i < squares.length; i++) {
             for (int j = 0; j < squares[i].length; j++) {
-                squares[j][i].hide();
-                System.err.println("deleting level ------------------------------------------------------------------");
+                squares[j][i] = null;
             }
+        }
+    }
+
+    public void noMoreLevels() {
+        if (currentLevel == null) {
+            picture = new Picture();
+            picture.load("/Users/codecadet/Desktop/ProjectGame/project01/resources/flow-free-04.png");
+            picture.translate(10, 10);
+            picture.draw();
         }
     }
 }

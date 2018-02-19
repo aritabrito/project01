@@ -3,19 +3,14 @@ package org.academiadecodigo.hexallents.gameEngine;
 import org.academiadecodigo.hexallents.squares.ImmutableSquare;
 import org.academiadecodigo.hexallents.squares.Square;
 import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.mouse.Mouse;
 import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
 import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
 import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 
-public class Player implements MouseHandler, KeyboardHandler {
+public class Player implements MouseHandler {
 
     private Mouse myMouse;
-    private Keyboard myKeyboard;
     private GridGame grid;
     private boolean selected;
     private Color selectedColor;
@@ -25,7 +20,6 @@ public class Player implements MouseHandler, KeyboardHandler {
     public Player(GridGame grid) {
         this.grid = grid;
         myMouse = new Mouse(this);
-        myKeyboard = new Keyboard(this);
         selected = false;
     }
 
@@ -34,17 +28,15 @@ public class Player implements MouseHandler, KeyboardHandler {
         myMouse.addEventListener(MouseEventType.MOUSE_CLICKED);
         myMouse.addEventListener(MouseEventType.MOUSE_MOVED);
 
-        KeyboardEvent spaceKey = new KeyboardEvent();
-        spaceKey.setKey(KeyboardEvent.KEY_SPACE);
-        spaceKey.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
     }
 
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
 
+        System.out.println(mouseEvent.getX() + " " + mouseEvent.getY());
         selectedSquare = grid.getSquare((int) mouseEvent.getX(), (int) mouseEvent.getY());
-
+        System.out.println(selectedSquare);
         System.out.println("CLICK. --------------------------------------------------------------");
         if (!selected && !selectedSquare.isUsed() && selectedSquare.getColor() != Color.BLACK) {
             selected = true;
@@ -94,17 +86,6 @@ public class Player implements MouseHandler, KeyboardHandler {
         }
     }
 
-    @Override
-    public void keyPressed(KeyboardEvent keyboardEvent) {
-        if(keyboardEvent.getKey() == KeyboardEvent.KEY_S){
-            grid.initGrid();
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyboardEvent keyboardEvent) {
-
-    }
 
 
 }

@@ -4,10 +4,9 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class Menu implements KeyboardHandler{
+public class Menu implements KeyboardHandler {
     private Picture picture;
     private Keyboard myKeyboard;
 
@@ -18,12 +17,8 @@ public class Menu implements KeyboardHandler{
     }
 
     public void keyEvents() {
-
         KeyboardEvent sKEY = new KeyboardEvent();
         sKEY.setKey(KeyboardEvent.KEY_S);
-        KeyboardEvent spaceKey = new KeyboardEvent();
-        spaceKey.setKey(KeyboardEvent.KEY_SPACE);
-        spaceKey.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         sKEY.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         myKeyboard.addEventListener(sKEY);
 

@@ -55,7 +55,8 @@ public abstract class Square {
     public void setUsed(boolean used) {
         this.used = used;
     }
-    public void hide(){
+
+    public void hide() {
         rectangle.delete();
     }
 

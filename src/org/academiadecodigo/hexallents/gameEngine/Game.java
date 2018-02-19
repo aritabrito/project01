@@ -1,7 +1,5 @@
 package org.academiadecodigo.hexallents.gameEngine;
 
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
-
 public class Game {
     private static GameState gameState;
 
@@ -19,11 +17,10 @@ public class Game {
             switch (gameState) {
                 case MENU:
                     menu = new Menu();
-
                     break;
                 case INGAME:
-                    player = new Player(grid);
                     grid = new GridGame();
+                    player = new Player(grid);
                     grid.nextLevel(currentLevel);
                     grid.initGrid();
                     player.keyEvents();
@@ -31,8 +28,6 @@ public class Game {
                     break;
             }
         }
-
-
     }
 
     public void checkVictory() {
