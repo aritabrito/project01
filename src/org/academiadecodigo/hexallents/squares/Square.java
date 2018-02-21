@@ -1,5 +1,6 @@
 package org.academiadecodigo.hexallents.squares;
 
+import org.academiadecodigo.hexallents.gameEngine.Grid;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
@@ -8,63 +9,50 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
  */
 public abstract class Square {
 
-
+    private final int row;
+    private final int col;
     private Rectangle rectangle;
-    private int col;
-    private int row;
     private boolean used;
-    protected Color color;
-    private int x2;
-    private int y2;
 
     public Square(int col, int row, Color color) {
         this.col = col;
         this.row = row;
-        this.color = color;
-    }
-
-    public void show(int x1, int y1, int x2, int y2) {
-        this.x2 = x2;
-        this.y2 = y2;
-        this.rectangle = new Rectangle(x1, y1, x2, y2);
+        this.rectangle = new Rectangle(col * Grid.CELL_SIZE + Grid.PADDING,
+                row * Grid.CELL_SIZE + Grid.PADDING,
+                Grid.CELL_SIZE,
+                Grid.CELL_SIZE);
         rectangle.setColor(color);
         rectangle.fill();
     }
 
     public Color getColor() {
-        return color;
+        return rectangle.getColor();
     }
 
     public void setColor(Color color) {
-        this.color = color;
-        rectangle.setColor(this.color);
-    }
-
-    public int getX2() {
-        return x2;
-    }
-
-    public int getY2() {
-        return y2;
+        rectangle.setColor(color);
     }
 
     public boolean isUsed() {
         return used;
     }
 
-    public void setUsed(boolean used) {
-        this.used = used;
+    public int getRow() {
+        return row;
     }
 
-    public void hide() {
-        rectangle.delete();
+    public int getCol() {
+        return col;
+    }
+
+    public void setUsed(boolean used) {
+        this.used = used;
     }
 
     @Override
     public String toString() {
         return "Square{" +
-                "color=" + color +
-                '}';
+                '}' + super.toString();
     }
 }
 

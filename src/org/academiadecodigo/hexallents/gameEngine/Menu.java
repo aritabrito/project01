@@ -10,7 +10,7 @@ public class Menu implements KeyboardHandler {
     private Picture picture;
     private Keyboard myKeyboard;
 
-    public Menu(){
+    public Menu() {
         myKeyboard = new Keyboard(this);
         keyEvents();
         showImage();
@@ -21,11 +21,9 @@ public class Menu implements KeyboardHandler {
         sKEY.setKey(KeyboardEvent.KEY_S);
         sKEY.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         myKeyboard.addEventListener(sKEY);
-
     }
 
-
-    public void showImage(){
+    public void showImage() {
         picture = new Picture();
         picture.load("resources/flow-free-01.png");
         picture.translate(10, 10);
@@ -38,9 +36,8 @@ public class Menu implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
-        if(keyboardEvent.getKey() == KeyboardEvent.KEY_S){
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
             hideImage();
-            Game.setGameState(GameState.INGAME);
         }
     }
 

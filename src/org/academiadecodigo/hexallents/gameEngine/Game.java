@@ -1,52 +1,30 @@
 package org.academiadecodigo.hexallents.gameEngine;
 
-public class Game {
-    private static GameState gameState;
+import org.academiadecodigo.hexallents.Solution;
 
-    private Menu menu;
-    private GridGame grid;
+public class Game {
+
+    private int level = 1;
+    private Grid grid;
     private Player player;
-    private int currentLevel = 1;
 
     public Game() {
-        gameState = GameState.MENU;
+        grid = new Grid(SquareFactory.getSquaresPerLevel(level));
+        player = new Player(grid);
+        player.keyEvents();
     }
 
-    public void init() {
-        while (gameState != GameState.NONE) {
-            switch (gameState) {
-                case MENU:
-                    menu = new Menu();
-                    break;
-                case INGAME:
-                    grid = new GridGame();
-                    player = new Player(grid);
-                    grid.nextLevel(currentLevel);
-                    grid.initGrid();
-                    player.keyEvents();
-                    checkVictory();
-                    break;
-            }
-        }
-    }
-
-    public void checkVictory() {
-
+    public void start() {
         while (true) {
-
-            if (grid.getSquares() == null) {
-                continue;
-            }
-            if (grid.checkIfComplete()) {
-                System.err.println("next level");
-                currentLevel++;
-                init();
-            }
+            proceed();
         }
     }
 
-    public static void setGameState(GameState gameState) {
-        Game.gameState = gameState;
+    public void proceed() {
+        if (Solution.LEVEL1.isLevelCleared(grid.getSquares())) {
+            grid = new Grid(SquareFactory.getSquaresPerLevel(++level));
+            player.setGrid(grid);
+        }
     }
-}
 
+}

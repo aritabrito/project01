@@ -16,7 +16,6 @@ public class ColorMapper {
             Color.YELLOW,
             Color.GREEN,
             Color.WHITE,
-
     };
 
     public static Color getColor(ColorEnum color){

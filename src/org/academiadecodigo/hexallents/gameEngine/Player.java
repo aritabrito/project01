@@ -11,24 +11,21 @@ import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 public class Player implements MouseHandler {
 
     private Mouse myMouse;
-    private GridGame grid;
+    private Grid grid;
     private boolean selected;
     private Color selectedColor;
     private Square selectedSquare;
     private Square currentSquare;
 
-    public Player(GridGame grid) {
+    public Player(Grid grid) {
         this.grid = grid;
         myMouse = new Mouse(this);
         selected = false;
     }
 
     public void keyEvents() {
-
         myMouse.addEventListener(MouseEventType.MOUSE_CLICKED);
         myMouse.addEventListener(MouseEventType.MOUSE_MOVED);
-
-
     }
 
     @Override
@@ -71,10 +68,10 @@ public class Player implements MouseHandler {
             }
             if (currentSquare.getColor() == Color.BLACK) {
 
-                if (currentSquare.getY2() <= selectedSquare.getY2() + GridGame.CELL_SIZE ||
-                        currentSquare.getX2() <= selectedSquare.getX2() + GridGame.CELL_SIZE ||
-                        currentSquare.getY2() <= selectedSquare.getY2() - GridGame.CELL_SIZE ||
-                        currentSquare.getX2() <= selectedSquare.getX2() - GridGame.CELL_SIZE &&
+                if (currentSquare.getY2() <= selectedSquare.getY2() + Grid.CELL_SIZE ||
+                        currentSquare.getX2() <= selectedSquare.getX2() + Grid.CELL_SIZE ||
+                        currentSquare.getY2() <= selectedSquare.getY2() - Grid.CELL_SIZE ||
+                        currentSquare.getX2() <= selectedSquare.getX2() - Grid.CELL_SIZE &&
                                 !currentSquare.isUsed()) {
 
                     currentSquare.setUsed(true);
@@ -84,8 +81,9 @@ public class Player implements MouseHandler {
         }
     }
 
-
-
+    public void setGrid(Grid grid) {
+        this.grid = grid;
+    }
 }
 
 
